@@ -25,6 +25,17 @@ exports.getBooking = (req, res) =>{
     })
 }
 
+// get bookings by username
+exports.getUserBookings = (req, res) =>{
+    BookingModel.getUserBookings(req.params.username, (err,bookings) => {
+        if(err)
+        res.send(err);
+
+        console.log('Bookings by username: ', bookings)
+        res.send(bookings)
+    })
+}
+
 // create booking
 exports.createBooking = (req, res) => {
     const bookingReqData= new BookingModel(req.body);

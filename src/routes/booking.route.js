@@ -15,6 +15,12 @@ router.get('/',bookingController.getBookingsList);
  */
 router.get('/:booking_id', bookingController.getBooking);
 
+// get bookings by username
+/**
+ * GET /bookings/userbookings/:username
+ */
+ router.get('/userbookings/:username', bookingController.getUserBookings);
+
 // create new booking
 /**
  * POST /bookings

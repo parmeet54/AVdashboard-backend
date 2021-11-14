@@ -39,6 +39,20 @@ Booking.getBooking = (booking_id, result) => {
     })
 }
 
+// get bookings by username
+Booking.getUserBookings = (username, result) => {
+    db.query('SELECT * FROM bookings WHERE username=?', username , (err, res) => {
+        if(err){
+            console.log('Error while fetching bookings by username', err);
+            result(null, err);
+        }
+        else{
+            console.log('Bookings for user fetched successfully');
+            result(null, res);
+        }
+    })
+}
+
 
 // create new booking
 Booking.createBooking = (bookingReqData, result) => {
