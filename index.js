@@ -27,13 +27,12 @@ const port = process.env.PORT || 5000;
 
 
 // Serving frontend
-app.use(express.static(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud', 'bulid')));
+app.use(express.static(path.join('../../Frontend/dashboard-frontend/avcloud', 'bulid')));
 
-if (process.env.production) {
-  app.get('/*', (req, res) => {
-      res.sendFile(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud', 'build/','index.html'));
-  });
-}
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join('../../Frontend/dashboard-frontend/avcloud', 'build/','index.html'));
+});
 
 
 // Root route
