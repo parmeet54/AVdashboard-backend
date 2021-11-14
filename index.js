@@ -26,15 +26,6 @@ app.use(express.json());
 const port = process.env.PORT || 5000;
 
 
-// Serving frontend
-app.use(express.static(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud/build/')));
-
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud/build/','index.html'));
-});
-
-
 // Root route
 // app.get("/", (req, res) => {
 //   res.send("Connected to Server on port: 5000");
@@ -87,6 +78,18 @@ app.post("/login", (req, res) => {
   );
   console.log(username, password);
 });
+
+
+
+// Serving frontend
+app.use(express.static(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud/build/')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud/build/','index.html'));
+});
+
+
 
 // Listen to port
 // connect to mongodb cluster, then start server
