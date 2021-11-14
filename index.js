@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path =  require("path")
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -24,10 +25,21 @@ app.use(express.json());
 // Server Port
 const port = process.env.PORT || 5000;
 
+
+// Serving frontend
+app.use(express.static(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud', 'bulid')));
+
+if (process.env.production) {
+  app.get('/*', (req, res) => {
+      res.sendFile(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud', 'build/','index.html'));
+  });
+}
+
+
 // Root route
-app.get("/", (req, res) => {
-  res.send("Connected to Server on port: 5000");
-});
+// app.get("/", (req, res) => {
+//   res.send("Connected to Server on port: 5000");
+// });
 
 // import user routes
 const userRoutes = require("./src/routes/user.route");
