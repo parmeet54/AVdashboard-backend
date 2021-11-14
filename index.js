@@ -27,11 +27,11 @@ const port = process.env.PORT || 5000;
 
 
 // Serving frontend
-app.use(express.static(path.join('../../Frontend/dashboard-frontend/avcloud', 'bulid')));
+//app.use(express.static(path.join('../../Frontend/dashboard-frontend/avcloud', 'bulid')));
 
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join('../../Frontend/dashboard-frontend/avcloud', 'build/','index.html'));
+  res.sendFile(path.join('../../Frontend/dashboard-frontend/avcloud/build/','index.html'));
 });
 
 
