@@ -31,7 +31,7 @@ const port = process.env.PORT || 5000;
 
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join('../../Frontend/dashboard-frontend/avcloud/build/','index.html'));
+  res.sendFile(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud/build/','index.html'));
 });
 
 
