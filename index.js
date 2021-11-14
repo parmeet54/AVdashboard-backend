@@ -27,7 +27,7 @@ const port = process.env.PORT || 5000;
 
 
 // Serving frontend
-//app.use(express.static(path.join('../../Frontend/dashboard-frontend/avcloud', 'bulid')));
+app.use(express.static(path.join('/home/ec2-user/Frontend/dashboard-frontend/avcloud/build/')));
 
 
 app.get('/*', (req, res) => {
