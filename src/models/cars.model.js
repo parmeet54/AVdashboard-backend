@@ -49,6 +49,23 @@ Car.createCar = (carReqData, result) => {
 }
 
 
+// update status by car_id
+Car.updateStatus = (car_id, carReqData, result) => {
+    db.query('UPDATE cars SET status = ? WHERE car_id=?', 
+    [carReqData.status,  car_id], 
+    (err, res) => {
+        if(err){
+            console.log('Error while updating car status', err);
+            result(null, err);
+        }
+        else{
+            console.log("Car Status  updated successfully");
+            result(null, {status: true, message:"Car status udated"});
+        }
+    })
+}
+
+
 // update car
 Car.updateCar = (car_id, carReqData, result) => {
     db.query('UPDATE cars SET car_id = ?, status = ?, car_type = ? WHERE car_id=?', 
@@ -64,6 +81,7 @@ Car.updateCar = (car_id, carReqData, result) => {
         }
     })
 }
+
 
 
 // Delete car

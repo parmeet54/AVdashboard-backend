@@ -27,11 +27,20 @@ router.post('/', carController.createCar);
  */
 router.delete('/:car_id', carController.deleteCar);
 
+// update car status by car_id
+/**
+ * PUT /cars/status/(car_id)
+ */
+ router.put("/status/:car_id", carController.updateStatus);
+
+
 // update car by car_id
 /**
  * PUT /cars/(car_id)
  */
-router.put('/:car_id', carController.updateCar);
+router.put("/:car_id", carController.updateCar);
+
+
 
 
 module.exports = router;

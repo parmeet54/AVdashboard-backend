@@ -28,6 +28,13 @@ router.post('/', bookingController.createBooking);
  router.delete('/:booking_id', bookingController.deleteBooking);
 
 
+// update booking status by booking_id
+/**
+ * PUT /bookings/status/(booking_id)
+ */
+ router.put("/status/:booking_id", bookingController.updateStatus);
+
+
  // update booking by booking_id
 /**
  * PUT /bookings/(booking_id)

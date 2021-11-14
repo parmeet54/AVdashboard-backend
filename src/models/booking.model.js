@@ -54,6 +54,23 @@ Booking.createBooking = (bookingReqData, result) => {
 }
 
 
+// update status by booking_id
+Booking.updateStatus = (booking_id, bookingReqData, result) => {
+    db.query('UPDATE bookings SET trip_status = ? WHERE booking_id=?', 
+    [bookingReqData.trip_status,  booking_id], 
+    (err, res) => {
+        if(err){
+            console.log('Error while updating booking trip status', err);
+            result(null, err);
+        }
+        else{
+            console.log("Booking Trip Status  updated successfully");
+            result(null, {status: true, message:"Booking trip status udated"});
+        }
+    })
+}
+
+
 // update booking
 Booking.updateBooking = (booking_id, bookingReqData, result) => {
     db.query('UPDATE bookings SET booking_id = ?, username = ?, car_id = ?, curr_location=?,destination=?, trip_status=?, cost=? WHERE booking_id=?', 

@@ -41,6 +41,22 @@ exports.createCar = (req, res) => {
 }
 
 
+// update status by car_id
+exports.updateStatus = (req, res) => {
+    const carReqData= new CarModel(req.body);
+    console.log("carReqData update", carReqData);
+
+    CarModel.updateStatus(req.params.car_id, carReqData, (err,car) => {
+        if(err)
+        res.send(err);
+
+        console.log('Car Status updated successfully', car)
+        res.send(car)
+    })
+    console.log("Request Data", req.body);
+}
+
+
 // update car by car_id
 exports.updateCar = (req, res) => {
     const carReqData= new CarModel(req.body);

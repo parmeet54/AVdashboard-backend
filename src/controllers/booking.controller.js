@@ -40,6 +40,22 @@ exports.createBooking = (req, res) => {
 }
 
 
+// update status by booking_id
+exports.updateStatus = (req, res) => {
+    const bookingReqData= new BookingModel(req.body);
+    console.log("bookingReqData update", bookingReqData);
+
+    BookingModel.updateStatus(req.params.booking_id, bookingReqData, (err,booking) => {
+        if(err)
+        res.send(err);
+
+        console.log('Booking Status updated successfully', booking)
+        res.send(booking)
+    })
+    console.log("Request Data", req.body);
+}
+
+
 // update booking by booking_id
 exports.updateBooking = (req, res) => {
     const bookingReqData= new BookingModel(req.body);
