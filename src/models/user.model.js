@@ -54,18 +54,21 @@ User.createUser = (userReqData, result) => {
 }
 
 
-// // update user
-// User.updateUser = (username, userReqData, result) => {
-//     db.query('UPDATE users SET INTO users SET ?', userReqData, (err, res) => {
-//         if(err){
-//             console.log('Error while creating user', err);
-//             result(null, err);
-//         }
-//         else{
-//             result(null, {status: true, message: 'User created'});
-//         }
-//     })
-// }
+// update user
+User.updateUser = (username, userReqData, result) => {
+    db.query('UPDATE users SET password = ?, name = ?, email = ?, address = ?, city = ?, credit_card = ? WHERE username=?', 
+    [userReqData.password , userReqData.name , userReqData.email , userReqData.address , userReqData.city , userReqData.credit_card, username], 
+    (err, res) => {
+        if(err){
+            console.log('Error while updating user', err);
+            result(null, err);
+        }
+        else{
+            console.log("user  updated successfully");
+            result(null, {status: true, message:"User udated"});
+        }
+    })
+}
 
 
 // Delete user

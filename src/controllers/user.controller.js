@@ -56,6 +56,21 @@ exports.createUser = (req, res) => {
 //     //UserModel.createUser((err, ))
 // }
 
+// update user by username
+exports.updateUser = (req, res) => {
+    const userReqData= new UserModel(req.body);
+    console.log("userReqData update", userReqData);
+
+    UserModel.updateUser(req.params.username, userReqData, (err,user) => {
+        if(err)
+        res.send(err);
+
+        console.log('User Updated successfully', user)
+        res.send(user)
+    })
+    console.log("Request Data", req.body);
+}
+
 
 // delete user by username
 exports.deleteUser = (req, res) => {

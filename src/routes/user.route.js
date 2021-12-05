@@ -27,4 +27,11 @@ router.post('/', userController.createUser);
  */
 router.delete('/:username', userController.deleteUser);
 
+// update user by username
+/**
+ * PUT /users/(username)
+ */
+ router.put("/:username", userController.updateUser);
+
+
 module.exports = router;
